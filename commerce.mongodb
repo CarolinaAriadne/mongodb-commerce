@@ -1,6 +1,6 @@
 use("commerce");
 
-//  db.produtos.find({});
+ db.produtos.find({});
 
 // 2 - // db.produtos.find({},{_id: 0,
 // // nome: 1,
@@ -12,6 +12,19 @@ use("commerce");
 // 4 - db.produtos.find({ vendidos: { $gt: 50, $lt: 100 } },
 //    { _id: 0, nome: 1, vendidos: 1 }).sort({ vendidos: 1 });
 
-db.produtos.find({ $or: [{ curtidas: { $eq: 36 } },
-  { vendidos: { $eq: 85 } }] }, 
-  { _id: 0, nome: 1, curtidas: 1, vendidos: 1 });
+//  5 - db.produtos.find({ $or: [{ curtidas: { $eq: 36 } },
+//   { vendidos: { $eq: 85 } }] }, 
+//   { _id: 0, nome: 1, curtidas: 1, vendidos: 1 });
+
+//  6 - db.produtos.find({$and:[{curtidas:{$gt:10}},
+//  {curtidas:{$lt:100}}]},
+//   { _id: 0, nome: 1, curtidas: 1});
+
+// 7 - db.produtos.find({$and:[{vendidos:{$ne:50}},
+//  {tags:{$exists: false}}]},
+//   { _id: 0, nome: 1, vendidos: 1});
+
+// 8 - db.produtos.deleteMany({ curtidas: { $lt: 50 } }, 
+// );
+// db.produtos.find({});
+
