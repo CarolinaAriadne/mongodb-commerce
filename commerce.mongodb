@@ -67,10 +67,14 @@
 // db.resumoProdutos.insertOne({franquia: "McDonalds", totalProdutos:lengthProdutos});
 // db.resumoProdutos.find({}, {_id: 0, franquia: 1, totalProdutos: 1});
 
+// 18 - db.produtos.updateMany({
+//     nome:
+//     {$in: ["Big Mac", "Quarteirão com Queijo"]}}, {$push: {ingredientes: "bacon"}});
+// db.produtos.find({}, { _id: 0, nome: 1, ingredientes: 1});    
+
+
 use("commerce");
 
-db.produtos.updateMany({
-    nome:
-    {$in: ["Big Mac", "Quarteirão com Queijo"]}}, {$push: {ingredientes: "bacon"}});
+db.produtos.updateMany({}, {$pull:{ingredientes: "cebola"}});
 
-db.produtos.find({}, { _id: 0, nome: 1, ingredientes: 1});    
+db.produtos.find({}, { _id: 0, nome: 1, ingredientes: 1});
