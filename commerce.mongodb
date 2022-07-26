@@ -1,4 +1,4 @@
-use("commerce");
+
 
 //  db.produtos.find({});
 
@@ -63,8 +63,14 @@ use("commerce");
 //  16 - db.produtos.updateOne({nome: "Big Mac"},{$currentDate:{ultimaModificacao:{$type: "timestamp"}}} );
 // db.produtos.find({ultimaModificacao:{$exists: true}},{ _id: 0, nome: 1});
 
-const lengthProdutos = db.produtos.countDocuments({});
+// 17 - const lengthProdutos = db.produtos.countDocuments({});
+// db.resumoProdutos.insertOne({franquia: "McDonalds", totalProdutos:lengthProdutos});
+// db.resumoProdutos.find({}, {_id: 0, franquia: 1, totalProdutos: 1});
 
-db.resumoProdutos.insertOne({franquia: "McDonalds", totalProdutos:lengthProdutos});
+use("commerce");
 
-db.resumoProdutos.find({}, {_id: 0, franquia: 1, totalProdutos: 1});
+db.produtos.updateMany({
+    nome:
+    {$in: ["Big Mac", "Quarteirão com Queijo"]}}, {$push: {ingredientes: "bacon"}});
+
+db.produtos.find({}, { _id: 0, nome: 1, ingredientes: 1});    
