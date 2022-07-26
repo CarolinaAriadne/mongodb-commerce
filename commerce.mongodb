@@ -94,10 +94,15 @@
 // 23 - db.produtos.updateMany({}, {$push:{tags:{$each:["combo", "tasty"], $sort: 1}}});
 // db.produtos.find({}, {_id: 0, nome: 1, tags: 1});
 
+
+//  24 - db.produtos.updateMany({}, {$push: {valoresNutricionais:{$each: [], $sort: {percentual: -1}}}} );
+
+// db.produtos.find({}, {_id: 0, valoresNutricionais: 1, nome: 1});
+
 use("commerce");
 
-db.produtos.updateMany({}, {$push: {valoresNutricionais:{$each: [], $sort: {percentual: -1}}}} );
+db.produtos.updateMany({valoresNutricionais:{$elemMatch:{tipo: "sódio", percentual:{$gte:40}}}}, {$push:{tags: "muito sódio"}});
 
-db.produtos.find({}, {_id: 0, valoresNutricionais: 1, nome: 1});
+db.produtos.find({}, {_id: 0, nome: 1, tags: 1 });
 
 
